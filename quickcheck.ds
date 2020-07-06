@@ -1,0 +1,57 @@
+# This file is a quick-check of vim-duckscript - it tries to use many
+# duckscript idioms in a single screen of text.
+# Comments check mai bad spellling with :spell enabled
+# TODO is highlighted, as are XXX FIXME WIP TBD
+
+# Commands - built-in should be different than custom functions, which should
+# be different from pre-processor commands.
+a = echo true 5 -10 +0 -0 ${expansion} %{spread} "string with space" atom # Built-in
+b = myfunc true 5 -10 +0 -0 ${expansion} %{spread} "string with space" atom  # Non-builtin
+!echo true 5 -10 +0 -0 ${expansion} %{spread} "string with space" atom # Pre-processor
+echo keywords shouldn't highlight for if elseif else end fn function
+
+# String escapes are valid both inside and outside quotes
+a = echo \" \n \t \r \\"Hello world \" \n \t \r \\" \\# Still a comment
+
+# Labels
+a = goto :label # Jump to :label, assignment pointless but allowed
+echo :label is just text in anything other than goto
+:mylabel val = set "label can share a line"
+:otherlabel # Comment on label line is okay
+    val = set "label can also be on its own line"
+
+# Flow control.
+:label val = for number in ${numbers}#Comment
+# This comment checks for off-by-one error on 'for' region
+    :label other = for letter in ${letters}#Comment
+# This comment checks for off-by-one error on 'for' region
+        echo Now serving ${number}-${letter}
+        :label yesifhasareturn = if true or false #Comment
+# This comment checks for off-by-one error on 'if' region
+            echo Nested if statement
+        elseif false#Comment
+            echo Never true
+        else#Comment
+            echo The default
+        end#Comment
+    end#Comment
+end#Comment
+
+# Functions
+x = function print_first_and_second_argument#Comment
+# This comment checks for off-by-one error on 'function' region
+    fn cantnes#Comment
+        echo no nested functions in duckscript
+    end#Comment
+    if true
+        echo ${1}
+    end
+    for i in ${once}
+        echo ${2}
+    end
+    return printed # `return` only keyword in `function`
+end#Comment
+
+return `return` is a normal atom outside of `fn`
+elseif `elseif` is a normal atom outside of `if`
+else `else` is a normal atom outside of `if`
