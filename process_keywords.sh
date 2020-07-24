@@ -7,8 +7,9 @@ LINE_HEADER='syntax match dsKeyword display'
 # function in the SDK docs. `-A1` grabs the heading and one line after it (the
 # aliases themselves)
 grep -A1 Aliases $1 |
-    sort -u             | # `#### Aliases` and `--` will sort to the top
-    tail -n+3           | # Skip the `#### Aliases` and `--` lines
+    sort -u             | # Sort and collect duplicates
+    grep -v 'Aliases'   | # Remove the `#### Aliases` lines
+    grep -v '\-\-'      | # Remove the `--` lines
     tr '\n' ' '         | # Turn newlines into spaces
     tr -d ','           | # Remove commas from commands with multiple aliases
     fold -w60 -s        | # Wrap to 60 columns
