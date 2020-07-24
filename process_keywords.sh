@@ -2,7 +2,7 @@
 
 # Usage: ./process_keywords.sh duckscript/docs/sdk.md
 
-LINE_HEADER='syntax match dsKeyword display'
+LINE_HEADER='syntax match duckKeyword display contained'
 # All commands are listed on a single line after the "Aliases" heading of each
 # function in the SDK docs. `-A1` grabs the heading and one line after it (the
 # aliases themselves)
