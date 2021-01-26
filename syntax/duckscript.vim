@@ -44,7 +44,7 @@ syntax match duckKeyword display contained "\v<%(set_add|set_remove|set_size|set
 syntax match duckKeyword display contained "\v<%(starts_with|string_to_bytes|substring|temp_dir|temp_file)>"
 syntax match duckKeyword display contained "\v<%(test_directory|test_file|touch|trigger_error|trim|trim_end)>"
 syntax match duckKeyword display contained "\v<%(trim_start|unalias|uname|unset|unset_all_vars|unset_env)>"
-syntax match duckKeyword display contained "\v<%(watchdog|wget|which|whoami|get_user_name|writebinfile)>"
+syntax match duckKeyword display contained "\v<%(watchdog|wget|which|while|whoami|get_user_name|writebinfile)>"
 syntax match duckKeyword display contained "\v<%(write_binary_file|writefile|write_text_file)>"
 syntax match duckKeyword display contained "\v<%(write_properties)>"
 highlight default link duckKeyword Keyword
