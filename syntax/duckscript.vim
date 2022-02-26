@@ -87,7 +87,7 @@ syntax match   duckVarAssign   "\v\=" display contained nextgroup=duckCommand sk
 syntax match   duckLabel       "\v^\s*\:\S+>" display nextgroup=duckCommand skipwhite
 syntax match   duckLabel       "\v^\s*\:\S+>\ze\s+\S+\s*\=" display nextgroup=duckVariable skipwhite
 syntax match   duckPreProc     "\v^\s*\!\S+>" display nextgroup=duckArguments skipwhite
-highlight default link duckArguments Ignore
+highlight default link duckArguments Normal
 highlight default link duckCommand Function
 highlight default link duckLabel Special
 highlight default link duckPreProc PreProc
